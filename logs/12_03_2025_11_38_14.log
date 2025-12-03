@@ -1,0 +1,52 @@
+{"base_dir": "C:\\Users\\Narala Nithin\\OneDrive\\Desktop\\semantic_image_search", "timestamp": "2025-12-03T06:08:14.720795Z", "level": "info", "event": "BASE_DIR resolved successfully"}
+{"env_path": "C:\\Users\\Narala Nithin\\OneDrive\\Desktop\\semantic_image_search\\.env", "timestamp": "2025-12-03T06:08:14.721797Z", "level": "info", "event": ".env loaded successfully"}
+{"value": "C:\\Users\\Narala Nithin\\OneDrive\\Desktop\\semantic_image_search\\images", "timestamp": "2025-12-03T06:08:14.722796Z", "level": "info", "event": "IMAGES_ROOT configured"}
+{"value": "C:\\Users\\Narala Nithin\\OneDrive\\Desktop\\semantic_image_search\\data\\query_images", "timestamp": "2025-12-03T06:08:14.723796Z", "level": "info", "event": "QUERY_IMAGE_ROOT configured"}
+{"value": "C:\\Users\\Narala Nithin\\OneDrive\\Desktop\\semantic_image_search\\data\\retrieved", "timestamp": "2025-12-03T06:08:14.730846Z", "level": "info", "event": "RETRIEVED_ROOT configured"}
+{"value": "ViT-B-32", "timestamp": "2025-12-03T06:08:14.731849Z", "level": "info", "event": "CLIP_MODEL_NAME loaded"}
+{"value": "laion2b_s34b_b79k", "timestamp": "2025-12-03T06:08:14.732850Z", "level": "info", "event": "CLIP_CHECKPOINT loaded"}
+{"value": "cpu", "timestamp": "2025-12-03T06:08:14.733849Z", "level": "info", "event": "DEVICE selected"}
+{"value": "https://f5aeb07c-adb0-4ec0-91a6-0ac26aa51200.us-east-1-1.aws.cloud.qdrant.io:6333", "timestamp": "2025-12-03T06:08:14.734864Z", "level": "info", "event": "QDRANT_URL loaded"}
+{"timestamp": "2025-12-03T06:08:14.735849Z", "level": "info", "event": "QDRANT_API_KEY loaded (hidden)"}
+{"value": "semantic-search", "timestamp": "2025-12-03T06:08:14.735849Z", "level": "info", "event": "QDRANT_COLLECTION loaded"}
+{"value": 512, "timestamp": "2025-12-03T06:08:14.735849Z", "level": "info", "event": "VECTOR_SIZE loaded"}
+{"value": "openai/gpt-oss-20b", "timestamp": "2025-12-03T06:08:14.736857Z", "level": "info", "event": "GROQ_MODEL loaded"}
+{"timestamp": "2025-12-03T06:08:16.734444Z", "level": "info", "event": "Initializing ImageSearchService"}
+{"url": "https://f5aeb07c-adb0-4ec0-91a6-0ac26aa51200.us-east-1-1.aws.cloud.qdrant.io:6333", "using_api_key": true, "timestamp": "2025-12-03T06:08:16.734444Z", "level": "info", "event": "Initializing Qdrant client"}
+HTTP Request: GET https://f5aeb07c-adb0-4ec0-91a6-0ac26aa51200.us-east-1-1.aws.cloud.qdrant.io:6333 "HTTP/1.1 200 OK"
+{"timestamp": "2025-12-03T06:08:17.840787Z", "level": "info", "event": "Qdrant client initialized successfully"}
+{"timestamp": "2025-12-03T06:08:17.841788Z", "level": "info", "event": "Fetching existing Qdrant collections..."}
+HTTP Request: GET https://f5aeb07c-adb0-4ec0-91a6-0ac26aa51200.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+{"collection": "semantic-search", "timestamp": "2025-12-03T06:08:18.734611Z", "level": "info", "event": "Using existing Qdrant collection"}
+{"collection": "semantic-search", "retrieved_root": "C:\\Users\\Narala Nithin\\OneDrive\\Desktop\\semantic_image_search\\data\\retrieved", "timestamp": "2025-12-03T06:08:18.734611Z", "level": "info", "event": "ImageSearchService initialized"}
+{"timestamp": "2025-12-03T06:08:18.735621Z", "level": "info", "event": "Initializing IndexService..."}
+{"timestamp": "2025-12-03T06:08:18.735621Z", "level": "info", "event": "Fetching existing Qdrant collections..."}
+HTTP Request: GET https://f5aeb07c-adb0-4ec0-91a6-0ac26aa51200.us-east-1-1.aws.cloud.qdrant.io:6333/collections "HTTP/1.1 200 OK"
+{"collection": "semantic-search", "timestamp": "2025-12-03T06:08:19.035699Z", "level": "info", "event": "Using existing Qdrant collection"}
+{"collection": "semantic-search", "timestamp": "2025-12-03T06:08:19.035699Z", "level": "info", "event": "IndexService initialized successfully"}
+{"timestamp": "2025-12-03T06:08:19.035699Z", "level": "info", "event": "Services initialized successfully"}
+{"query": "give me image of yellow flower", "top_k": 5, "category": null, "timestamp": "2025-12-03T06:08:43.111079Z", "level": "info", "event": "Text search request received"}
+{"model": "openai/gpt-oss-20b", "timestamp": "2025-12-03T06:08:43.112072Z", "level": "info", "event": "Initializing QueryTranslator..."}
+{"timestamp": "2025-12-03T06:08:43.295166Z", "level": "info", "event": "QueryTranslator initialized successfully"}
+{"input_query": "give me image of yellow flower", "timestamp": "2025-12-03T06:08:43.295166Z", "level": "info", "event": "Translating query"}
+{"timestamp": "2025-12-03T06:08:43.295166Z", "level": "info", "event": "Sending translation prompt to LLM"}
+HTTP Request: POST https://api.groq.com/openai/v1/chat/completions "HTTP/1.1 200 OK"
+{"original": "give me image of yellow flower", "translated": "bright yellow flower", "timestamp": "2025-12-03T06:08:43.890455Z", "level": "info", "event": "Translation completed"}
+{"translated": "bright yellow flower", "timestamp": "2025-12-03T06:08:43.890455Z", "level": "info", "event": "Query translated for text search"}
+{"query_text": "bright yellow flower", "top_k": 5, "filter": null, "timestamp": "2025-12-03T06:08:43.890455Z", "level": "info", "event": "Text search started"}
+{"model_name": "ViT-B-32", "checkpoint": "laion2b_s34b_b79k", "device": "cpu", "timestamp": "2025-12-03T06:08:43.891456Z", "level": "info", "event": "Initializing EmbeddingLoader with model"}
+Parsing model identifier. Schema: None, Identifier: ViT-B-32
+Loaded built-in ViT-B-32 model config.
+Instantiating model architecture: CLIP
+Loading full pretrained weights from: C:\Users\Narala Nithin\.cache\huggingface\hub\models--laion--CLIP-ViT-B-32-laion2B-s34B-b79K\snapshots\1a25a446712ba5ee05982a381eed697ef9b435cf\open_clip_model.safetensors
+Final image preprocessing configuration set: {'size': (224, 224), 'mode': 'RGB', 'mean': (0.48145466, 0.4578275, 0.40821073), 'std': (0.26862954, 0.26130258, 0.27577711), 'interpolation': 'bicubic', 'resize_mode': 'shortest', 'fill_color': 0}
+Model ViT-B-32 creation process complete.
+Parsing tokenizer identifier. Schema: None, Identifier: ViT-B-32
+Attempting to load config from built-in: ViT-B-32
+Using default SimpleTokenizer.
+{"timestamp": "2025-12-03T06:08:52.344991Z", "level": "info", "event": "EmbeddingLoader initialized successfully"}
+{"text": "bright yellow flower", "timestamp": "2025-12-03T06:08:52.345988Z", "level": "info", "event": "Embedding text"}
+{"vector_length": 512, "timestamp": "2025-12-03T06:08:52.453063Z", "level": "info", "event": "Text embedding successful"}
+HTTP Request: POST https://f5aeb07c-adb0-4ec0-91a6-0ac26aa51200.us-east-1-1.aws.cloud.qdrant.io:6333/collections/semantic-search/points/query "HTTP/1.1 200 OK"
+{"query_text": "bright yellow flower", "total_results": 5, "timestamp": "2025-12-03T06:08:53.457409Z", "level": "info", "event": "Text search completed"}
+{"total_results": 5, "timestamp": "2025-12-03T06:08:53.457409Z", "level": "info", "event": "Text search completed"}
